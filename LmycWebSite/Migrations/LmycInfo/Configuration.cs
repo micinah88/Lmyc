@@ -61,7 +61,12 @@ namespace LmycWebSite.Migrations.LmycInfo
                     PasswordHash = PasswordHash.HashPassword("P@$$w0rd"),
                     FirstName = "Admin",
                     LastName = "Admin",
-                    Address = "123 Admin St",
+                    Street = "2373 Venture Place",
+                    City = "Save Lake",
+                    Province = "AB",
+                    PostalCode = "T0G 2A2",
+                    Country = "Canada",
+                    //Address = "123 Admin St",
                     MobileNumber = "12345678",
                     SailingExperience = "Expert"
                 };
@@ -79,7 +84,12 @@ namespace LmycWebSite.Migrations.LmycInfo
                     PasswordHash = PasswordHash.HashPassword("P@$$w0rd"),
                     FirstName = "Member",
                     LastName = "One",
-                    Address = "123 Member St",
+                    Street = "2147 Galts Ave",
+                    City = "Red Deer",
+                    Province = "AB",
+                    PostalCode = "T4N 2A6",
+                    Country = "Canada",
+                    //Address = "123 Member St",
                     MobileNumber = "12345678",
                     SailingExperience = "Beginner"
                 };

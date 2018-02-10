@@ -2,4 +2,4 @@
 
 add-migration -ProjectName LmycWebSite -ConfigurationTypeName LmycWebSite.Migrations.LmycInfo.Configuration "InitialCreate"
 
-update-database -ProjectName LmycWebSite -ConfigurationTypeName LmycWebSite.Migrations.LmycInfo.Configuration 
+update-database -ProjectName LmycWebSite -ConfigurationTypeName LmycWebSite.Migrations.LmycInfo.Configuration

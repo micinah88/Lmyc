@@ -98,29 +98,29 @@ namespace LmycWebSite.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
+        //[Required]
+        //[Display(Name = "Address")]
+        //public string Address { get; set; }
+
         [Required]
-        [Display(Name = "Address")]
-        public string Address { get; set; }
+        [Display(Name = "Street Address")]
+        public string Street { get; set; }
 
-        //[Required]
-        //[Display(Name = "Street Address")]
-        //public string Street { get; set; }
+        [Required]
+        [Display(Name = "City")]
+        public string City { get; set; }
 
-        //[Required]
-        //[Display(Name = "City")]
-        //public string City { get; set; }
+        [Required]
+        [Display(Name = "Province")]
+        public string Province { get; set; }
 
-        //[Required]
-        //[Display(Name = "Province")]
-        //public string Province { get; set; }
+        [Required]
+        [Display(Name = "Postal Code")]
+        public string PostalCode { get; set; }
 
-        //[Required]
-        //[Display(Name = "Postal Code")]
-        //public string PostalCode { get; set; }
-
-        //[Required]
-        //[Display(Name = "Country")]
-        //public string Country { get; set; }
+        [Required]
+        [Display(Name = "Country")]
+        public string Country { get; set; }
 
         [Required]
         [Display(Name = "Mobile Number")]
