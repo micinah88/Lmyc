@@ -46,6 +46,9 @@ namespace LmycDataLib.Models
         }
 
         public DbSet<Boat> Boats { get; set; }
+        //public DbSet<User> Users { get; set; }
+
+        //public DbSet<ApplicationUser> ApplicationUsers { get; set; }
     }
 
     public class ApplicationRoleManager : RoleManager<IdentityRole>
