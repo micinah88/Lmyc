@@ -204,13 +204,13 @@
     <Compile Include="Controllers\BoatsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="DummyData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\LmycInfo\201802100647108_InitialCreate.cs" />
-    <Compile Include="Migrations\LmycInfo\201802100647108_InitialCreate.Designer.cs">
-      <DependentUpon>201802100647108_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\LmycInfo\201802110033031_Reinitalizing.cs" />
+    <Compile Include="Migrations\LmycInfo\201802110033031_Reinitalizing.Designer.cs">
+      <DependentUpon>201802110033031_Reinitalizing.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\LmycInfo\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -219,6 +219,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Lmyc.mdf" />
+    <Content Include="App_Data\Lmyc_log.ldf">
+      <DependentUpon>Lmyc.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Docs\migration.txt" />
@@ -287,10 +291,7 @@
     <Content Include="Views\ApplicationUsers\Edit.cshtml" />
     <Content Include="Views\ApplicationUsers\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Views\User\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
@@ -311,8 +312,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\LmycInfo\201802100647108_InitialCreate.resx">
-      <DependentUpon>201802100647108_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\LmycInfo\201802110033031_Reinitalizing.resx">
+      <DependentUpon>201802110033031_Reinitalizing.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
