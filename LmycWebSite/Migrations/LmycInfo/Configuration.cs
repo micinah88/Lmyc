@@ -1,3 +1,5 @@
+﻿
+
 namespace LmycWebSite.Migrations.LmycInfo
 {
     using LmycDataLib.Models;
@@ -97,6 +99,10 @@ namespace LmycWebSite.Migrations.LmycInfo
                 UserManager.Create(user);
                 UserManager.AddToRole(user.Id, roles[1]);
             }
+
+            context.Boats.AddOrUpdate(
+                b => b.BoatId, DummyData.GetBoats().ToArray());
+
         }
     }
 }

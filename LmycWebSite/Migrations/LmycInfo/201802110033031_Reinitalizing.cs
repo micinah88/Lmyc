@@ -3,7 +3,7 @@ namespace LmycWebSite.Migrations.LmycInfo
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class Reinitalizing : DbMigration
     {
         public override void Up()
         {
@@ -15,12 +15,13 @@ namespace LmycWebSite.Migrations.LmycInfo
                         BoatName = c.String(),
                         Picture = c.String(),
                         LengthInFeet = c.Int(nullable: false),
-                        Make = c.Int(nullable: false),
+                        Make = c.String(nullable: false),
                         Year = c.Int(nullable: false),
                         RecordCreationDate = c.DateTime(nullable: false),
                         CreatedBy = c.String(),
                     })
-                .PrimaryKey(t => t.BoatId);
+                .PrimaryKey(t => t.BoatId)
+                .ForeignKey("dbo.AspNetUsers", t => t.CreatedBy);
             
             CreateTable(
                 "dbo.AspNetRoles",

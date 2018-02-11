@@ -1,5 +1,5 @@
 ﻿enable-migrations -ProjectName LmycWebSite -ContextTypeName ApplicationDbContext -MigrationsDirectory Migrations\LmycInfo
 
-add-migration -ProjectName LmycWebSite -ConfigurationTypeName LmycWebSite.Migrations.LmycInfo.Configuration "InitialCreate"
+add-migration -ProjectName LmycWebSite -ConfigurationTypeName LmycWebSite.Migrations.LmycInfo.Configuration "InitialCreate2"
 
 update-database -ProjectName LmycWebSite -ConfigurationTypeName LmycWebSite.Migrations.LmycInfo.Configuration
