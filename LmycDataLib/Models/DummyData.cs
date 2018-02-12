@@ -8,7 +8,7 @@ namespace LmycWebSite
 {
     public class DummyData
     {
-        public static List<Boat> GetBoats()
+        public static List<Boat> GetBoats(ApplicationDbContext db)
         {
             List<Boat> boats = new List<Boat>()
             {
@@ -20,7 +20,7 @@ namespace LmycWebSite
                     Make = "BoatLovers Ltd.",
                     Year = 1998,
                     RecordCreationDate = DateTime.Today,
-                    CreatedBy = "a"
+                    CreatedBy = db.Users.FirstOrDefault(u => u.UserName == "a").Id
                 },
                 new Boat
                 {
@@ -30,7 +30,7 @@ namespace LmycWebSite
                     Make = "BoatLovers Ltd.",
                     Year = 1998,
                     RecordCreationDate = DateTime.Today,
-                    CreatedBy = "a"
+                    CreatedBy = db.Users.FirstOrDefault(u => u.UserName == "a").Id
                 },
                 new Boat
                 {
@@ -40,7 +40,7 @@ namespace LmycWebSite
                     Make = "BoatLovers Ltd.",
                     Year = 2003,
                     RecordCreationDate = DateTime.Today,
-                    CreatedBy = "a"
+                    CreatedBy = db.Users.FirstOrDefault(u => u.UserName == "a").Id
                 },
                 new Boat
                 {
@@ -50,7 +50,7 @@ namespace LmycWebSite
                     Make = "BoatLovers Ltd.",
                     Year = 2004,
                     RecordCreationDate = DateTime.Today,
-                    CreatedBy = "a"
+                    CreatedBy = db.Users.FirstOrDefault(u => u.UserName == "a").Id
                 },
                 new Boat
                 {
@@ -60,7 +60,7 @@ namespace LmycWebSite
                     Make = "Einstein Ltd.",
                     Year = 2008,
                     RecordCreationDate = DateTime.Today,
-                    CreatedBy = "a"
+                    CreatedBy = db.Users.FirstOrDefault(u => u.UserName == "a").Id
                 },
 
             };

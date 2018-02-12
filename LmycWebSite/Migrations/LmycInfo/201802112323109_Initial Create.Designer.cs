@@ -7,13 +7,13 @@ namespace LmycWebSite.Migrations.LmycInfo
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Reinitalizing : IMigrationMetadata
+    public sealed partial class InitialCreate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Reinitalizing));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201802110033031_Reinitalizing"; }
+            get { return "201802112323109_Initial Create"; }
         }
         
         string IMigrationMetadata.Source

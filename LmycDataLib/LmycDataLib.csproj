@@ -97,6 +97,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Models\Boat.cs" />
+    <Compile Include="Models\DummyData.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\UserRole.cs" />

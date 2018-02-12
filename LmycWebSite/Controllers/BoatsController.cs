@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using LmycDataLib.Models;
+using Microsoft.AspNet.Identity;
 
 namespace LmycWebSite.Controllers
 {
@@ -16,9 +17,11 @@ namespace LmycWebSite.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Boats
+        [Authorize(Roles = "Admin, Member")]
         public async Task<ActionResult> Index()
         {
-            return View(await db.Boats.ToListAsync());
+            var boats = db.Boats.Include(u => u.User);
+            return View(await boats.ToListAsync());
         }
 
         // GET: Boats/Details/5
@@ -37,6 +40,7 @@ namespace LmycWebSite.Controllers
         }
 
         // GET: Boats/Create
+        [Authorize(Roles ="Admin")]
         public ActionResult Create()
         {
             return View();
@@ -51,6 +55,8 @@ namespace LmycWebSite.Controllers
         {
             if (ModelState.IsValid)
             {
+                boat.CreatedBy = User.Identity.GetUserId();
+                boat.RecordCreationDate = DateTime.Today.Date;
                 db.Boats.Add(boat);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");

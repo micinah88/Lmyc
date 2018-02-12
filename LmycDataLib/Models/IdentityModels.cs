@@ -30,7 +30,7 @@ namespace LmycDataLib.Models
         public string MobileNumber { get; set; }
         public string SailingExperience { get; set; }
 
-
+        //public virtual Boat Boat { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

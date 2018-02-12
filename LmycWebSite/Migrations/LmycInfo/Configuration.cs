@@ -24,16 +24,6 @@ namespace LmycWebSite.Migrations.LmycInfo
         {
             //  This method will be called after migrating to the latest version.
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
             var RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
             for (int i = 0; i < roles.Length; i++)
             {
@@ -101,7 +91,7 @@ namespace LmycWebSite.Migrations.LmycInfo
             }
 
             context.Boats.AddOrUpdate(
-                b => b.BoatId, DummyData.GetBoats().ToArray());
+                b => b.BoatId, DummyData.GetBoats(context).ToArray());
 
         }
     }

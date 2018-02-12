@@ -7,7 +7,13 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @if (User.Identity.IsAuthenticated)
+    {
+        if (User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("Create New", "Create")
+        }
+    }
 </p>
 <table class="table">
     <tr>
@@ -56,12 +62,25 @@
             @Html.DisplayFor(modelItem => item.RecordCreationDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CreatedBy)
+            @Html.DisplayFor(modelItem => item.User.UserName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.BoatId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.BoatId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.BoatId })
+			@if (User.Identity.IsAuthenticated)
+            {
+                if(User.IsInRole("Admin"))
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.BoatId}) 
+                    <text> | </text>
+                    @Html.ActionLink("Details", "Details", new { id = item.BoatId})
+                    <text> | </text>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.BoatId})
+                }
+                else
+                {
+                    @Html.ActionLink("Details", "Details", new { id = item.BoatId})
+                }
+            }
+
         </td>
     </tr>
 }
