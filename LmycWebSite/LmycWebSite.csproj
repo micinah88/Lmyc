@@ -218,6 +218,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Lmyc.mdf" />
+    <Content Include="App_Data\Lmyc_log.ldf">
+      <DependentUpon>Lmyc.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Docs\migration.txt" />
@@ -305,9 +309,7 @@
       <Name>LmycDataLib</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Migrations\LmycInfo\201802112323109_Initial Create.resx">
       <DependentUpon>201802112323109_Initial Create.cs</DependentUpon>

@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using LmycDataLib.Models;
+using Microsoft.AspNet.Identity;
 
 namespace LmycWebSite.Controllers
 {
@@ -49,8 +50,10 @@ namespace LmycWebSite.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "Id,FirstName,LastName,Street,City,Province,PostalCode,Country,MobileNumber,SailingExperience,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
         {
+            var PasswordHash = new PasswordHasher();
             if (ModelState.IsValid)
             {
+                applicationUser.PasswordHash = PasswordHash.HashPassword(applicationUser.PasswordHash);
                 db.Users.Add(applicationUser);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
