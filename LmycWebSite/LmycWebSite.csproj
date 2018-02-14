@@ -207,9 +207,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\LmycInfo\201802112323109_Initial Create.cs" />
-    <Compile Include="Migrations\LmycInfo\201802112323109_Initial Create.Designer.cs">
-      <DependentUpon>201802112323109_Initial Create.cs</DependentUpon>
+    <Compile Include="Migrations\LmycInfo\201802142035493_InitialCreate.cs" />
+    <Compile Include="Migrations\LmycInfo\201802142035493_InitialCreate.Designer.cs">
+      <DependentUpon>201802142035493_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\LmycInfo\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -309,10 +309,9 @@
       <Name>LmycDataLib</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\LmycInfo\201802112323109_Initial Create.resx">
-      <DependentUpon>201802112323109_Initial Create.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\LmycInfo\201802142035493_InitialCreate.resx">
+      <DependentUpon>201802142035493_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
