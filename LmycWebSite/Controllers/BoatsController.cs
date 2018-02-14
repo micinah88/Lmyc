@@ -21,7 +21,6 @@ namespace LmycWebSite.Controllers
         public async Task<ActionResult> Index()
         {
             var boats = db.Boats.Include(u => u.User);
-            
             return View(await boats.ToListAsync());
         }
 

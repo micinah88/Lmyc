@@ -75,7 +75,7 @@ namespace LmycWebSite.Models
 
         [Required]
         [MaxLength(15, ErrorMessage = "The {0} can have a maximum of {1} characters.")]
-        [StringLength(16, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 1)]
+        [StringLength(16, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
         [Display(Name = "Username")]
         public string Username { get; set; }
 
