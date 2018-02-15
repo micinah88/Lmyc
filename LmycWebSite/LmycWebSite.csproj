@@ -204,24 +204,22 @@
     <Compile Include="Controllers\BoatsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\LmycInfo\201802142035493_InitialCreate.cs" />
-    <Compile Include="Migrations\LmycInfo\201802142035493_InitialCreate.Designer.cs">
-      <DependentUpon>201802142035493_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\LmycInfo\201802150823512_InitialCreate.cs" />
+    <Compile Include="Migrations\LmycInfo\201802150823512_InitialCreate.Designer.cs">
+      <DependentUpon>201802150823512_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\LmycInfo\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AdminViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Lmyc.mdf" />
-    <Content Include="App_Data\Lmyc_log.ldf">
-      <DependentUpon>Lmyc.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Docs\migration.txt" />
@@ -289,6 +287,8 @@
     <Content Include="Views\ApplicationUsers\Details.cshtml" />
     <Content Include="Views\ApplicationUsers\Edit.cshtml" />
     <Content Include="Views\ApplicationUsers\Index.cshtml" />
+    <Content Include="Views\Roles\Create.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -310,8 +310,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\LmycInfo\201802142035493_InitialCreate.resx">
-      <DependentUpon>201802142035493_InitialCreate.cs</DependentUpon>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\LmycInfo\201802150823512_InitialCreate.resx">
+      <DependentUpon>201802150823512_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

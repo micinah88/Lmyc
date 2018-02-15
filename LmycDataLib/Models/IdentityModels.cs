@@ -57,6 +57,11 @@ namespace LmycDataLib.Models
 
         //public DbSet<ApplicationUser> ApplicationUsers { get; set; }
     }
+    public class ApplicationRole : IdentityRole
+    {
+        public ApplicationRole() : base() { }
+        public ApplicationRole(string name) : base(name) { }
+    }
 
     public class ApplicationRoleManager : RoleManager<IdentityRole>
     {
