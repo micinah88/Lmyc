@@ -14,10 +14,10 @@ namespace LmycWebSite
             {
                 new Boat
                 {
-                    BoatName = "Jeremiah Thomas",
-                    Picture = "http://www.boattown.com/assets/img/final/home/new-arrivals.jpg",
+                    BoatName = "MaryJane",
+                    Picture = "https://static.pexels.com/photos/163236/luxury-yacht-boat-speed-water-163236.jpeg",
                     LengthInFeet = 54,
-                    Make = "BoatSellet Ltd.",
+                    Make = "BoatLovers Ltd.",
                     Year = 1998,
                     RecordCreationDate = DateTime.Today,
                     CreatedBy = db.Users.FirstOrDefault(u => u.UserName == "a").Id
@@ -44,8 +44,8 @@ namespace LmycWebSite
                 },
                 new Boat
                 {
-                    BoatName = "Best Boat Ever",
-                    Picture = "http://www.boattown.com/assets/img/final/home/new-arrivals.jpg",
+                    BoatName = "Mary Jane No.3",
+                    Picture = "https://static.pexels.com/photos/163236/luxury-yacht-boat-speed-water-163236.jpeg",
                     LengthInFeet = 59,
                     Make = "BoatLovers Ltd.",
                     Year = 2004,

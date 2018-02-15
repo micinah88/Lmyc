@@ -309,6 +309,12 @@
       <Name>LmycDataLib</Name>
     </ProjectReference>
   </ItemGroup>
+<<<<<<< HEAD
+=======
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+>>>>>>> a56e893e90cc6e8b3b9fa53cb3f82a2847a92813
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
