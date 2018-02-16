@@ -22,7 +22,7 @@ namespace LmycWebSite.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "If you have any questions, contact us!";
 
             return View();
         }

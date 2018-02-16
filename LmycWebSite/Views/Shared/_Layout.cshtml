@@ -9,36 +9,47 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("LMYC", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <!-- <li>@Html.ActionLink("About", "About", "Home")</li> -->
-                    <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        
-                        <li>@Html.ActionLink("Boats", "Index", "Boats")</li>
-                        
-                        if (User.IsInRole("Admin"))
-                        {
-                            <li>@Html.ActionLink("User & Roles", "Index", "ApplicationUsers")</li>
-                        }
-                    }
+    
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: white; color:darkblue">
+        
+        
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
 
-                </ul>
-                @Html.Partial("_LoginPartial")
+                    <a class="navbar-brand navbar" href="/"> 
+                        <img class="logo" src="@(Request.ApplicationPath + "logo.PNG")" height="80" width="160" /> 
+                    </a>
+                    @* @Html.ActionLink("LMYC", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" }) *@
+                </div>
+            
+
+                <div class="navbar-collapse collapse navbar-body">
+
+                    <ul class="nav navbar-nav">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+
+                            <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("Boats", "Index", "Boats") </li>
+
+                            if (User.IsInRole("Admin"))
+                            {
+                                <li>@Html.ActionLink("User & Roles", "Index", "ApplicationUsers")</li>
+                            }
+                        }
+
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+
             </div>
         </div>
-    </div>
+  
     <div class="container body-content">
         @RenderBody()
         <hr />

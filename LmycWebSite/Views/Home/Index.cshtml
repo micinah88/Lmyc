@@ -2,30 +2,34 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>Jei & Micole</h1>
-    <p class="lead">TBD</p>
+<div class="jumbotron mainpage-block" style="background-image: url(@(Request.ApplicationPath + "mainimage.jpeg"))">
+    <!--
+    style="background-image: url("@(Request.ApplicationPath + "mainimage.jpeg")")"    
+    -->
+    <h1>Jei & Micole</h1> 
+    <p class="lead">Welcome to Jei & Micole's LMYC Organization!</p>
     <p><a href="/boats" class="btn btn-primary btn-lg">To see our boats &raquo;</a></p>
 </div>
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
+        <h2>Who are we?</h2>
         <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+            The Lower Mainland Yacht Cooperative (LMYC) is a provincially registered and regulated non-profit organization, 
+            which is owned and operated by its members. 
+            LMYC is governed by the British Columbia Co-operative Act.
         </p>
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <h2>Membership</h2>
+        <p>You don't need to own a boat or even know how to sail in order become a member of one of White Rock's best kept secrets – the Lower Mainland Yacht Co-op (LMYC). All you need is an interest in sailing.
+You can learn to be a skipper on one of our seven boats; join the fun on long weekend cruises or simply sail around Semiahmoo Bay with other members... all for an affordable price!</p>
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
     </div>
     <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <h2>Join us today!</h2>
+        <p>You can easily sign up for a membership today.</p>
+        <p><a class="btn btn-default" href="~/Account/Register">To sign up &raquo;</a></p>
     </div>
 </div>
