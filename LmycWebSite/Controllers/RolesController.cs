@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -60,6 +61,10 @@ namespace LmycWebSite.Controllers
         // GET: Roles/Edit/5
         public ActionResult Edit(int id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             return View();
         }
 
@@ -80,19 +85,31 @@ namespace LmycWebSite.Controllers
         }
 
         // GET: Roles/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var role = db.Roles.FirstOrDefault(u => u.Id == id);
+            if (role == null)
+            {
+                return HttpNotFound();
+            }
+            return View(role);
         }
 
         // POST: Roles/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(string id)
         {
             try
             {
                 // TODO: Add delete logic here
-
+                var role = db.Roles.FirstOrDefault(u => u.Id == id);
+                db.Roles.Remove(role);
+                
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch

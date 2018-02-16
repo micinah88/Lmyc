@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using LmycDataLib.Models;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace LmycWebSite.Controllers
 {
@@ -19,7 +20,8 @@ namespace LmycWebSite.Controllers
         // GET: ApplicationUsers
         public async Task<ActionResult> Index()
         {
-            return View(await db.Users.ToListAsync());
+            var users = db.Users.Include(r => r.Roles);
+            return View(await users.ToListAsync());
         }
 
         // GET: ApplicationUsers/Details/5
@@ -74,6 +76,13 @@ namespace LmycWebSite.Controllers
             {
                 return HttpNotFound();
             }
+            //List<SelectListItem> items = new List<SelectListItem>();
+            //foreach (var role in db.Roles)
+            //{
+            //    items.Add(new SelectListItem { Text = role.Name});
+            //}
+            ViewBag.RoleName = new SelectList(db.Roles, "Id", "Name");
+            //ViewBag.RoleName = items;
             return View(applicationUser);
         }
 
@@ -82,14 +91,27 @@ namespace LmycWebSite.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,FirstName,LastName,Street,City,Province,PostalCode,Country,MobileNumber,SailingExperience,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,FirstName,LastName,Street,City,Province,PostalCode,Country,MobileNumber,SailingExperience,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser, [Bind(Include = "Id,Name")] IdentityRole role)
         {
+            var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+            
             if (ModelState.IsValid)
             {
+                var oldUser = UserManager.FindById(applicationUser.Id);
+                var oldRoleId = oldUser.Roles.SingleOrDefault().RoleId;
+                var oldRoleName = db.Roles.SingleOrDefault(r => r.Id == oldRoleId).Name;
+
+                if (oldRoleName != role.Name)
+                {
+                    UserManager.RemoveFromRole(applicationUser.Id, oldRoleName);
+                    UserManager.AddToRole(applicationUser.Id, role.Name);
+                }
+
                 db.Entry(applicationUser).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+            ViewBag.RoleName = new SelectList(db.Roles, "Id", "Name");
             return View(applicationUser);
         }
 
