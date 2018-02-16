@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using LmycDataLib.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using LmycWebSite.Models;
 
 namespace LmycWebSite.Controllers
 {
@@ -76,11 +77,22 @@ namespace LmycWebSite.Controllers
             {
                 return HttpNotFound();
             }
-            //List<SelectListItem> items = new List<SelectListItem>();
-            //foreach (var role in db.Roles)
-            //{
-            //    items.Add(new SelectListItem { Text = role.Name});
-            //}
+            RoleViewModel userModel = new RoleViewModel
+            {
+                Id = applicationUser.Id,
+                UserName = applicationUser.UserName,
+                FirstName = applicationUser.FirstName,
+                LastName = applicationUser.LastName,
+                Email = applicationUser.Email,
+                PasswordHash = applicationUser.PasswordHash,
+                Street = applicationUser.Street,
+                City = applicationUser.City,
+                Province = applicationUser.Province,
+                PostalCode = applicationUser.PostalCode,
+                Country = applicationUser.Country,
+                MobileNumber = applicationUser.MobileNumber,
+                SailingExperience = applicationUser.SailingExperience
+            };
             ViewBag.RoleName = new SelectList(db.Roles, "Id", "Name");
             //ViewBag.RoleName = items;
             return View(applicationUser);
