@@ -97,16 +97,6 @@ namespace LmycWebSite.Controllers
             
             if (ModelState.IsValid)
             {
-                var oldUser = UserManager.FindById(applicationUser.Id);
-                var oldRoleId = oldUser.Roles.SingleOrDefault().RoleId;
-                var oldRoleName = db.Roles.SingleOrDefault(r => r.Id == oldRoleId).Name;
-
-                if (oldRoleName != role.Name)
-                {
-                    UserManager.RemoveFromRole(applicationUser.Id, oldRoleName);
-                    UserManager.AddToRole(applicationUser.Id, role.Name);
-                }
-
                 db.Entry(applicationUser).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
