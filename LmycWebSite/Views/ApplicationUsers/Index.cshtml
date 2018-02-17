@@ -5,10 +5,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>List of Users</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @*@Html.ActionLink("Create New", "Create")*@
     @Html.ActionLink("User Role", "Index", "Roles")
 </p>
 <table class="table">
@@ -45,9 +45,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.SailingExperience)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Roles)
         </th>
 
         <th></th>
@@ -90,16 +87,13 @@
             @Html.DisplayFor(modelItem => item.SailingExperience)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Roles)
-        </td>
-        <td>
             @if (item.UserName.Equals("a"))
             {
                 @Html.ActionLink("Details", "Details", new { id = item.Id })
             }
             else
             {
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id, role = item.Roles}) 
+                @Html.ActionLink("Edit Role", "Edit", new { id = item.Id}) 
                 <text> | </text>
                 @Html.ActionLink("Details", "Details", new { id = item.Id })
                 <text> | </text>

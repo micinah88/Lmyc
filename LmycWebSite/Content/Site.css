@@ -11,6 +11,7 @@
     margin-top: 10px;
     position: relative;
 }
+
 .navbar-body {
     margin-top: 30px;
 }
@@ -20,15 +21,17 @@
     border-radius: 15px;
     padding: 40px;
 }
+
 .one-block h2 {
-    /*title*/
+        /*title*/
 }
+
 .one-block h3 {
-    /*message*/
+        /*message*/
 }
+
 .mainpage-block {
     background-image: url("../Image/mainimage.jpeg");
-    
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 

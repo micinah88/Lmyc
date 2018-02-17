@@ -13,7 +13,7 @@ namespace LmycWebSite.Migrations.LmycInfo
         
         string IMigrationMetadata.Id
         {
-            get { return "201802160417272_InitialCreate"; }
+            get { return "201802162359224_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

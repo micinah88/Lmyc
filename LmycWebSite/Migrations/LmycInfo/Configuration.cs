@@ -59,7 +59,7 @@ namespace LmycWebSite.Migrations.LmycInfo
                     PostalCode = "T0G 2A2",
                     Country = "Canada",
                     //Address = "123 Admin St",
-                    MobileNumber = "12345678",
+                    MobileNumber = "604-234-5678",
                     SailingExperience = "Expert"
                 };
 
@@ -67,12 +67,12 @@ namespace LmycWebSite.Migrations.LmycInfo
                 UserManager.AddToRole(user.Id, roles[0]);
             }
 
-            if (!context.Users.Any(u => u.UserName == "b"))
+            if (!context.Users.Any(u => u.UserName == "m"))
             {
                 var user = new ApplicationUser
                 {
-                    UserName = "b",
-                    Email = "b@b.b",
+                    UserName = "m",
+                    Email = "m@m.m",
                     PasswordHash = PasswordHash.HashPassword("P@$$w0rd"),
                     FirstName = "Member",
                     LastName = "One",
@@ -82,7 +82,7 @@ namespace LmycWebSite.Migrations.LmycInfo
                     PostalCode = "T4N 2A6",
                     Country = "Canada",
                     //Address = "123 Member St",
-                    MobileNumber = "12345678",
+                    MobileNumber = "604-234-5678",
                     SailingExperience = "Beginner"
                 };
 

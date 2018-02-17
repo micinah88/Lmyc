@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using LmycDataLib.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 using LmycWebSite.Models;
 
 namespace LmycWebSite.Controllers
@@ -17,6 +18,28 @@ namespace LmycWebSite.Controllers
     public class ApplicationUsersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationUserManager _userManager;
+
+        public ApplicationUsersController()
+        {
+        }
+
+        public ApplicationUsersController(ApplicationUserManager userManager)
+        {
+            UserManager = userManager;
+        }
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
 
         // GET: ApplicationUsers
         public async Task<ActionResult> Index()
@@ -77,25 +100,14 @@ namespace LmycWebSite.Controllers
             {
                 return HttpNotFound();
             }
-            RoleViewModel userModel = new RoleViewModel
+            UserViewModel userViewModel = new UserViewModel
             {
                 Id = applicationUser.Id,
-                UserName = applicationUser.UserName,
-                FirstName = applicationUser.FirstName,
-                LastName = applicationUser.LastName,
-                Email = applicationUser.Email,
-                PasswordHash = applicationUser.PasswordHash,
-                Street = applicationUser.Street,
-                City = applicationUser.City,
-                Province = applicationUser.Province,
-                PostalCode = applicationUser.PostalCode,
-                Country = applicationUser.Country,
-                MobileNumber = applicationUser.MobileNumber,
-                SailingExperience = applicationUser.SailingExperience
+                UserName = applicationUser.UserName
+
             };
-            ViewBag.RoleName = new SelectList(db.Roles, "Id", "Name");
-            //ViewBag.RoleName = items;
-            return View(applicationUser);
+            ViewBag.Role = new SelectList(db.Roles, "Name", "Name");
+            return View(userViewModel);
         }
 
         // POST: ApplicationUsers/Edit/5
@@ -103,18 +115,20 @@ namespace LmycWebSite.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,FirstName,LastName,Street,City,Province,PostalCode,Country,MobileNumber,SailingExperience,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser, [Bind(Include = "Id,Name")] IdentityRole role)
+        //[Bind(Include = "Id,FirstName,LastName,Street,City,Province,PostalCode,Country,MobileNumber,SailingExperience,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser
+        public async Task<ActionResult> Edit(UserViewModel userViewModel)
         {
-            var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
             
             if (ModelState.IsValid)
             {
-                db.Entry(applicationUser).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                var updatedUser = db.Users.SingleOrDefault(x => x.Id == userViewModel.Id);
+                await this.UserManager.AddToRoleAsync(updatedUser.Id, userViewModel.Role);
+                //db.Entry(applicationUser).State = EntityState.Modified;
+                //await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.RoleName = new SelectList(db.Roles, "Id", "Name");
-            return View(applicationUser);
+            ViewBag.Role = new SelectList(db.Roles, "Id", "Name");
+            return View(userViewModel);
         }
 
         // GET: ApplicationUsers/Delete/5
