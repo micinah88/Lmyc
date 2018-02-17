@@ -20,14 +20,18 @@
                 @Html.DisplayFor(modelItem => user.UserName)
             </td>
             <td>
-                @using (Html.BeginForm("Remove", "Roles", FormMethod.Post))
-                {
-                    @Html.Hidden("userId", user.Id)
-                    @Html.Hidden("roleName", roleName)
-                    <div class="form-actions no-color">
-                        <input type="submit" value="Remove" class="btn btn-link" />
-                    </div>
+                @if (!user.UserName.Equals("a")) {
+                    using (Html.BeginForm("Remove", "Roles", FormMethod.Post))
+                    {
+                        @Html.Hidden("userId", user.Id)
+                        @Html.Hidden("roleName", roleName)
+                    
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Remove" class="btn btn-link" />
+                        </div>
+                    }
                 }
+                
             </td>
         </tr>
     }
