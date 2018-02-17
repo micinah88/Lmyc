@@ -90,6 +90,8 @@ namespace LmycWebSite.Controllers
         {
             if (ModelState.IsValid)
             {
+                boat.CreatedBy = User.Identity.GetUserId();
+                boat.RecordCreationDate = DateTime.Today.Date;
                 db.Entry(boat).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");

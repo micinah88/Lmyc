@@ -4,76 +4,79 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>Boat</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.BoatName)
-        </dt>
+    <h2>Detailed Information</h2>
 
-        <dd>
-            @Html.DisplayFor(model => model.BoatName)
-        </dd>
+    <div>
+        
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.BoatName)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Picture)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.BoatName)
+            </dd>
 
-        <dd>
-            <img src= "@Html.DisplayFor(model => model.Picture)" width="200" height="120"/> 
-            <br />@Html.DisplayFor(model => model.Picture)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Picture)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LengthInFeet)
-        </dt>
+            <dd>
+                <img src="@Html.DisplayFor(model => model.Picture)" width="200" height="120" />
+                <br />@Html.DisplayFor(model => model.Picture)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.LengthInFeet)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.LengthInFeet)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Make)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.LengthInFeet)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Make)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Make)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Year)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Make)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Year)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Year)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.RecordCreationDate)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Year)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.RecordCreationDate)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.RecordCreationDate)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.RecordCreationDate)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.User.UserName)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </dt>
 
-    </dl>
-</div>
-<p>
-@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-{
-    @Html.ActionLink("Edit", "Edit", new { id = Model.BoatId }) 
-    
-} 
-    | @Html.ActionLink("Back to List", "Index")
-</p>
+            <dd>
+                @Html.DisplayFor(model => model.User.UserName)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("Edit", "Edit", new { id = Model.BoatId })
+
+        }
+        | @Html.ActionLink("Back to List", "Index")
+    </p>
+
+
